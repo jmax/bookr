@@ -6,8 +6,8 @@
 <%= f.date_select :published_on %>
 
 <%= f.has_and_belongs_to_many :authors, :full_name, Author.all %>
-<div style="clear:both" />
+<div style="clear:both"></div>
 
 <%= f.has_and_belongs_to_many :tags, :name, Tag.all(:order => :name) %>
-<div style="clear:both" />
+<div style="clear:both"></div>
 
