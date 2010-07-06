@@ -9,3 +9,9 @@ h2. Dependencies
 
 Bookr ha sido creada sobre Rails 2.3.8.
 
+h2. Demo
+
+http://bookr.heroku.com/
+
+usuario: superman
+password: superman
