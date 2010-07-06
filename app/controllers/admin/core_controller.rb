@@ -9,6 +9,7 @@ class Admin::CoreController < ApplicationController
     "Bookr v.1.0"
   end
 
+  set_module :books
   set_module :authors
   set_module :categories
   set_module :tags

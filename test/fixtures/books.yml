@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  category: 
+  title: 
+  abstract: MyText
+  description: MyText
+  volumes: 1
+  published_on: 2010-07-06
+
+two:
+  category: 
+  title: 
+  abstract: MyText
+  description: MyText
+  volumes: 1
+  published_on: 2010-07-06
