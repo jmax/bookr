@@ -4,7 +4,12 @@ namespace :db do
     EMAIL_DOMAIN = 'bookr.com'
 
     puts "*** Deleting loaded data from database..."
-    [User].each(&:delete_all)
+    [Tag, User].each(&:delete_all)
+
+    puts "*** Creating Tags..."
+    20.times do
+      Tag.create!(:name => Faker::Lorem.words(1).join)
+    end
 
     puts "*** Creating Users..."
     ["admin", "superman", "batman", "hulk"].each do |username|
