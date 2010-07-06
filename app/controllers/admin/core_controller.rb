@@ -10,6 +10,7 @@ class Admin::CoreController < ApplicationController
   end
 
   set_module :books
+  set_module :memberships
   set_module :authors
   set_module :categories
   set_module :tags

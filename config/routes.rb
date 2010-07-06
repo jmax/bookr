@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :books
+    admin.resources :memberships
     admin.resources :authors
     admin.resources :categories
     admin.resources :tags

@@ -4,7 +4,7 @@ namespace :db do
     EMAIL_DOMAIN = 'bookr.com'
 
     puts "*** Deleting loaded data from database..."
-    [Author, Category, Tag, Book, User].each(&:delete_all)
+    [Author, Category, Tag, Book, Membership, User].each(&:delete_all)
 
     puts "*** Creating Authors..."
     20.times do
@@ -39,6 +39,15 @@ namespace :db do
         :published_on => (10.years.ago.to_date..Time.now.to_date).to_a.rand,
         :author_ids   => [AUTHOR_IDS_LIST.rand],
         :tag_ids      => [TAG_IDS_LIST.rand]
+      )
+    end
+
+    puts "*** Creating Memberships..."
+    10.times do |i|
+      Membership.create!(
+        :card_id => (1000 + i).to_s,
+        :first_name => Faker::Name.first_name,
+        :last_name => Faker::Name.last_name
       )
     end
 
