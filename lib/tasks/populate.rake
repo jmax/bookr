@@ -4,11 +4,20 @@ namespace :db do
     EMAIL_DOMAIN = 'bookr.com'
 
     puts "*** Deleting loaded data from database..."
-    [Tag, User].each(&:delete_all)
+    [Author, Tag, User].each(&:delete_all)
+
+    puts "*** Creating Authors..."
+    20.times do
+      Author.create!(
+        :first_name => Faker::Name.first_name,
+        :last_name  => Faker::Name.last_name,
+        :bio         => Faker::Lorem.paragraphs(3).join(' ')
+      )
+    end
 
     puts "*** Creating Tags..."
     20.times do
-      Tag.create!(:name => Faker::Lorem.words(1).join)
+      Tag.create(:name => Faker::Lorem.words(1).join)
     end
 
     puts "*** Creating Users..."

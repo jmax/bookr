@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :tags
+    admin.resources :authors
   end
 
   map.resource  :account, :controller => "users"
