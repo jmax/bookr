@@ -1,0 +1,5 @@
+<% klass.content_columns.each do |column| -%>
+<% unless ['created_at', 'updated_at'].include?(column.name) -%>
+<%%= f.<%= form_type[column.type] %> :<%= column.name %> %>
+<% end -%>
+<% end -%>

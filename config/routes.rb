@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.namespace :admin do |admin|
+    admin.resources :tags
+  end
+
   map.resource  :account, :controller => "users"
   map.resources :users
   map.resource  :user_session
