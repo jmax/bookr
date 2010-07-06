@@ -4,7 +4,7 @@ namespace :db do
     EMAIL_DOMAIN = 'bookr.com'
 
     puts "*** Deleting loaded data from database..."
-    [Author, Tag, User].each(&:delete_all)
+    [Author, Category, Tag, User].each(&:delete_all)
 
     puts "*** Creating Authors..."
     20.times do
@@ -13,6 +13,12 @@ namespace :db do
         :last_name  => Faker::Name.last_name,
         :bio         => Faker::Lorem.paragraphs(3).join(' ')
       )
+    end
+
+    puts "*** Creating Categories..."
+    ["Internet", "Web Development", "Social Networking", "Web Design",
+     "Usability", "UX", "HTML&CSS Hacks", "Misc"].each do |category_name|
+      Category.create!(:name => category_name)
     end
 
     puts "*** Creating Tags..."
