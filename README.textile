@@ -1,0 +1,11 @@
+h1. Bookr
+
+h2. Sobre Bookr
+
+Bookr trata de explicar las asociaciones entre modelos ActiveRecord dentro de
+una aplicación Rails.
+
+h2. Dependencies
+
+Bookr ha sido creada sobre Rails 2.3.8.
+
