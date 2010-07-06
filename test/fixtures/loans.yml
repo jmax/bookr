@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  membership: 
+  book: 
+  started_on: 2010-07-06
+  finished_on: 2010-07-06
+  canceled: false
+
+two:
+  membership: 
+  book: 
+  started_on: 2010-07-06
+  finished_on: 2010-07-06
+  canceled: false

@@ -1,0 +1,21 @@
+
+<%=
+  present :elegant do |p|
+    p.header do |r|
+      r.field 'Membership', @resource.membership.full_name
+      r.field 'Book', @resource.book.title
+      r.field 'Finished on', @resource.finished_on
+    end
+    p.body do |r|
+      r.field 'Started on', @resource.started_on
+      r.field 'Canceled', @resource.canceled
+    end
+    p.actions do |r|
+#      r.text link_to('manage some nested resource', path_to_some_resource_path(@resource))
+      r.text edit_action
+      r.text destroy_action
+      r.text back_action
+    end
+  end
+%>
+

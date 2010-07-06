@@ -1,0 +1,14 @@
+<%= list_builder_for @records do |list|
+      list.membership :with => :full_name
+      list.book :with => :title
+      list.started_on
+      list.finished_on
+      list.canceled
+    end %>
+
+<% content_for :extras do %>
+  <% filters_for do %>
+    <%= all_filters %>
+  <% end %>
+<% end %>
+

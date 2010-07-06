@@ -1,0 +1,6 @@
+<%= f.select :membership_id, Membership.to_select %>
+<%= f.select :book_id, Book.to_select %>
+<%= f.date_select :started_on %>
+<%= f.date_select :finished_on %>
+<%= f.check_box :canceled %>
+
