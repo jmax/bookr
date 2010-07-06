@@ -1,15 +1,17 @@
- 
+
 <%=
   present :elegant do |p|
     p.header do |r|
-      r.field 'Abstract', @resource.abstract
+      r.field 'Title', @resource.title
+      r.field 'Volumes', @resource.volumes
+      r.field 'Published on', @resource.published_on
     end
     p.body do |r|
+      r.field 'Authors', @resource.author_names
+      r.field 'Abstract', @resource.abstract
       r.field 'Description', @resource.description
       r.field 'Volumes', @resource.volumes
       r.field 'Published on', @resource.published_on
-      r.field 'Created at', @resource.created_at
-      r.field 'Updated at', @resource.updated_at
     end
     p.actions do |r|
 #      r.text link_to('manage some nested resource', path_to_some_resource_path(@resource))
@@ -19,3 +21,4 @@
     end
   end
 %>
+

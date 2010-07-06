@@ -5,3 +5,6 @@
 <%= f.text_field :volumes %>
 <%= f.date_select :published_on %>
 
+<%= f.has_and_belongs_to_many :authors, :full_name, Author.all %>
+<div style="clear:both" />
+

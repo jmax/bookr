@@ -14,6 +14,7 @@ namespace :db do
         :bio         => Faker::Lorem.paragraphs(3).join(' ')
       )
     end
+    AUTHOR_IDS_LIST = Author.all.collect(&:id)
 
     puts "*** Creating Categories..."
     ["Internet", "Web Development", "Social Networking", "Web Design",
@@ -34,7 +35,8 @@ namespace :db do
         :abstract     => Faker::Lorem.paragraphs(2).join(' '),
         :description => Faker::Lorem.paragraphs(6).join(' '),
         :volumes      => [1,2,3,4,5].rand,
-        :published_on => (10.years.ago.to_date..Time.now.to_date).to_a.rand
+        :published_on => (10.years.ago.to_date..Time.now.to_date).to_a.rand,
+        :author_ids   => [AUTHOR_IDS_LIST.rand]
       )
     end
 

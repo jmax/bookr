@@ -1,12 +1,12 @@
 class AdminBuilder < ActionView::Helpers::FormBuilder
     attr_reader :options
-    
+
     def initialize(object_name, object, template, options, proc)
       super
       @options[:show_nil] = true if @options[:show_nil].nil?
       @form_columns = []
     end
-  
+
     (field_helpers - %w(check_box radio_button hidden_field)).each do |selector|
       define_method(selector) do |*params|
         fld = params[0]
@@ -20,15 +20,15 @@ class AdminBuilder < ActionView::Helpers::FormBuilder
         end
       end
     end
-    
+
     def has_and_belongs_to_many(habtm_relation, label_field, collection)
       habtm_options = build_habtm_collection(habtm_relation, collection, label_field)
       build_habtm_box_with(habtm_relation, habtm_options)
     end
-    
+
     def build_habtm_collection(habtm_relation, collection, label_field)
-      html = ""  
-      collection.each do |item|    
+      html = ""
+      collection.each do |item|
         html << "    <li>"
         html << '      <div class="habtm-option">'
         name = "#{@object.class.to_s.underscore}[#{habtm_relation.to_s.singularize}_ids][]"
@@ -40,20 +40,20 @@ class AdminBuilder < ActionView::Helpers::FormBuilder
       end
       html
     end
-    
+
     def build_habtm_box_with(habtm_relation, habtm_options)
       html  = '<div class="habtm-box">'
       html << "  <h3>#{habtm_relation.to_s.titleize}</h3>"
       html << "  <ul>#{habtm_options}</ul>"
       html << '</div>'
       html
-    end    
-    
+    end
+
     def hidden_field(fld, options = {})
       return '' if no_show?(fld, options)
       super(fld, options)
     end
-    
+
     def check_box(fld, options = {})
       return '' if no_show?(fld, options)
       if read_only(options)
@@ -63,7 +63,7 @@ class AdminBuilder < ActionView::Helpers::FormBuilder
         wrapper(fld, super(fld, options) + label(fld, options), options.merge(:check_box => true))
       end
     end
-    
+
     def select(fld, choices, options = {}, html_options = {})
       return '' if no_show?(fld, options)
       if read_only(options)
@@ -81,37 +81,37 @@ class AdminBuilder < ActionView::Helpers::FormBuilder
         field(fld, options)
       else
         options = {:order => [:day, :month, :year]}.merge(set_class(options))
-        wrapper(fld, label(fld, options) +  
+        wrapper(fld, label(fld, options) +
                 @template.content_tag(:span, super, :class => 'date_entrada'),
                 options)
       end
     end
- 
+
     def datetime_select(fld, options = {})
       return '' if no_show?(fld, options)
       if read_only(options)
         field(fld, options)
       else
         options = set_class(options)
-        wrapper(fld, label(fld, options) +  
+        wrapper(fld, label(fld, options) +
                 @template.content_tag(:span, super, :class => 'date_entrada'),
                 options)
       end
     end
-    
+
     def select_time(fld, options = {})
       return '' if no_show?(fld, options)
       if read_only(options)
         field(fld, options.merge(:read_only => true))
       else
         options = set_class(options).merge(:prefix => fld)
-        wrapper(fld, label(fld, options) + 
-                      @template.content_tag(:span, @template.select_time(fld_value(fld, options), options), 
+        wrapper(fld, label(fld, options) +
+                      @template.content_tag(:span, @template.select_time(fld_value(fld, options), options),
                                             :class => 'date_entrada'),
                       options)
       end
     end
-    
+
     def auto_complete(association, fields, options = {})
       return '' if no_show?(association, options)
       if read_only(options)
@@ -138,10 +138,10 @@ class AdminBuilder < ActionView::Helpers::FormBuilder
       opts = options[:highlight] ? {:span => {:class => 'highlight'}} : {}
       opts.delete(:columns)
       opts[:label] = {:id => 'label_' + @object_name.to_s + fld.to_s}
-      opts[:label].merge! :style => 'display:none' if options[:hidden]      
+      opts[:label].merge! :style => 'display:none' if options[:hidden]
       @template.content_tag(
-                  :div, 
-                  "#{label(fld, options)} 
+                  :div,
+                  "#{label(fld, options)}
                   #{@template.content_tag(:span, fld_value(fld, options))}",
                   :class => :field
                  )
@@ -160,7 +160,7 @@ class AdminBuilder < ActionView::Helpers::FormBuilder
       def no_show?(fld, options)
         fld_value(fld).nil? && read_only(options) && @options[:show_nil] == false
       end
-      
+
       def read_only(options)
         false
       end
@@ -169,9 +169,9 @@ class AdminBuilder < ActionView::Helpers::FormBuilder
         options[:class] = default || options[:class]
         options
       end
-      
+
       def label(fld, options)
-        @template.content_tag(:label, options[:label] || fld.to_s.humanize, :class => 'label', :for => "#{@object_name}_#{fld}") + "<br/>"
+        @template.content_tag(:label, options[:label] || fld.to_s.humanize, :class => 'label', :for => "#{@object_name}_#{fld}")
       end
 
       def wrapper(fld, text, options)
@@ -182,5 +182,6 @@ class AdminBuilder < ActionView::Helpers::FormBuilder
         spnr = options[:spinner] ? @template.spinner("#{id}_spinner") : ''
         @template.content_tag(:div, text + spnr, opts)
       end
-      
+
   end
+

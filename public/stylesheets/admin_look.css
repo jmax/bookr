@@ -390,6 +390,10 @@ div.elegant div.actions a.neutro:hover {
   color: #666666;
 }
 
+#base_form div.field label.label {
+  display: block;
+}
+
 #base_form div.field input,
 #base_form div.field textarea {
   width: 912px;
