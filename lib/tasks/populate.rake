@@ -26,6 +26,7 @@ namespace :db do
     20.times do
       Tag.create(:name => Faker::Lorem.words(1).join)
     end
+    TAG_IDS_LIST = Tag.all.collect(&:id)
 
     puts "*** Creating Books..."
     100.times do
@@ -36,7 +37,8 @@ namespace :db do
         :description => Faker::Lorem.paragraphs(6).join(' '),
         :volumes      => [1,2,3,4,5].rand,
         :published_on => (10.years.ago.to_date..Time.now.to_date).to_a.rand,
-        :author_ids   => [AUTHOR_IDS_LIST.rand]
+        :author_ids   => [AUTHOR_IDS_LIST.rand],
+        :tag_ids      => [TAG_IDS_LIST.rand]
       )
     end
 

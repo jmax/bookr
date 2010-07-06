@@ -1,11 +1,14 @@
 <%= list_builder_for @records do |list|
       list.category :with => 'name'
+      list.title
       list.html :caption => 'Authors' do |book|
         book.author_names
       end
-      list.title
       list.volumes
       list.published_on
+      list.html :caption => 'Tagged with' do |book|
+        book.tag_names
+      end
     end %>
 
 <% content_for :extras do %>

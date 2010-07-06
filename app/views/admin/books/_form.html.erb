@@ -8,3 +8,6 @@
 <%= f.has_and_belongs_to_many :authors, :full_name, Author.all %>
 <div style="clear:both" />
 
+<%= f.has_and_belongs_to_many :tags, :name, Tag.all(:order => :name) %>
+<div style="clear:both" />
+
