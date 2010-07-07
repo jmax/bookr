@@ -15,5 +15,6 @@ class Admin::CoreController < ApplicationController
   set_module :authors
   set_module :categories
   set_module :tags
+  set_module :packs
 end
 

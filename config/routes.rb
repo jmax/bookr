@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :authors
     admin.resources :categories
     admin.resources :tags
+    admin.resources :packs
   end
 
   map.resource  :account, :controller => "users"
