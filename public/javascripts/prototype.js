@@ -43,6 +43,7 @@ if (Prototype.Browser.MobileSafari)
 /* Based on Alex Arnell's inheritance implementation. */
 var Class = {
   create: function() {
+    console.log('holi');
     var parent = null, properties = $A(arguments);
     if (Object.isFunction(properties[0]))
       parent = properties.shift();
