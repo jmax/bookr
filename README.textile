@@ -16,4 +16,4 @@ http://bookr.heroku.com/
 usuario: superman
 password: superman
 
-h3. Ultima línea agregada localmente
+h3. Ultima línea modificada localmente
